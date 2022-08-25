@@ -1,4 +1,5 @@
 .profile {
+  font-family: 'Inter';
   margin: 40px auto 0 auto;
   width: calc(100% - 2 * 200px);
   display: flex;

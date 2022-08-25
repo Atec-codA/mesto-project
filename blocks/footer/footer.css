@@ -1,1 +1,6 @@
-.footer {}
+.footer {
+  max-width: 1280px;
+  width: calc(100% - 2 * 200px);
+  margin: 66px auto 0 auto;
+  font-family: 'Inter';
+}

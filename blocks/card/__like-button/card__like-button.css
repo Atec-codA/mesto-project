@@ -1,0 +1,10 @@
+.card__like-button {
+  margin: 0;
+  width: 22px;
+  height: 22px;
+  background: url(../../../images/Vector\ \(Stroke\).svg);
+  background-repeat: no-repeat;
+  outline: 0;
+  border: 0;
+  align-self: center;
+}
