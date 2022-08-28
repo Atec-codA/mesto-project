@@ -9,6 +9,7 @@
   transition: 0.1s linear;
   cursor: pointer;
   background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .profile__button-edit:hover {
