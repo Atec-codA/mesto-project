@@ -5,3 +5,24 @@
   display: flex;
   align-items: center;
 }
+
+@media screen and (max-width: 1279px) {
+  .profile {
+    width: calc(100% - 2 * 100px);
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .profile {
+    width: calc(100% - 2 * 25px);
+    margin: 32px auto 0 auto;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .profile {
+    width: calc(100% - 2 * 19px);
+    margin: 42px auto 0 auto;
+    flex-direction: column;
+  }
+}
