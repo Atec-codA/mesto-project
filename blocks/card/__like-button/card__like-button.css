@@ -11,7 +11,7 @@
   cursor: pointer;
 }
 
-.card__like-button[active] {
+.card__like-button:active {
   background: url(../../../images/Union.svg);
   background-repeat: no-repeat;
   outline: 0;

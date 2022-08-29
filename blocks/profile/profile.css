@@ -1,27 +1,28 @@
 .profile {
   font-family: 'Inter';
   margin: 40px auto 0 auto;
-  width: calc(100% - 2 * 200px);
+  max-width: 1280px;
+  width: calc(100% - 400px);
   display: flex;
   align-items: center;
 }
 
 @media screen and (max-width: 1279px) {
   .profile {
-    width: calc(100% - 2 * 100px);
+    width: calc(100% - 200px);
   }
 }
 
 @media screen and (max-width: 1023px) {
   .profile {
-    width: calc(100% - 2 * 25px);
+    width: calc(100% - 50px);
     margin: 32px auto 0 auto;
   }
 }
 
 @media screen and (max-width: 767px) {
   .profile {
-    width: calc(100% - 2 * 19px);
+    width: calc(100% - 38px);
     margin: 42px auto 0 auto;
     flex-direction: column;
   }

@@ -1,19 +1,11 @@
 .footer__copyright {
   color: white;
-  width: calc(100% - 2 * 200px);
-  margin: 0 auto 60px auto;
+  margin: 66px auto 60px auto;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
   color: #545454;
-}
-
-@media screen and (max-width: 1279px) {
-  .footer__copyright {
-    width: 100%;
-    margin-right: auto;
-  }
 }
 
 @media screen and (max-width: 767px) {

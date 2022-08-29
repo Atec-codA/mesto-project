@@ -2,8 +2,9 @@
   width: 24px;
   height: 24px;
   background: transparent url(../../../images/Edit\ Button.svg);
+  background-size: 24px;
   outline: none;
-  border: 1px solid #fff;
+  border: 0px;
   align-self: center;
   margin: 0 0 0 18px;
   transition: 0.1s linear;
@@ -21,5 +22,6 @@
     width: 18px;
     height: 18px;
     margin: 30px 0 0 10px;
+    background-size: 18px;
   }
 }

@@ -1,0 +1,6 @@
+.page__property {
+  max-width: 1280px;
+  margin: 0 auto;
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  background-color: black;
+}
