@@ -26,6 +26,8 @@
     border-radius: 2px;
     background: transparent url(../../../images/Vector-add-button.svg);
     background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
     margin-top: 36px;
   }
 }
