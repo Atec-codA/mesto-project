@@ -22,12 +22,7 @@
 @media screen and (max-width: 767px) {
   .profile__button-add {
     width: 100%;
-    border: 2px solid white;
-    border-radius: 2px;
-    background: transparent url(../../../images/Vector-add-button.svg);
     background-size: 16px;
-    background-repeat: no-repeat;
-    background-position: center;
     margin-top: 36px;
   }
 }
