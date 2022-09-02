@@ -11,6 +11,7 @@
   cursor: pointer;
   background-repeat: no-repeat;
   background-position: center;
+  padding: 0;
 }
 
 .profile__button-edit:hover {
@@ -23,5 +24,7 @@
     height: 18px;
     margin: 30px 0 0 10px;
     background-size: 7.5px 7.5px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
   }
 }
