@@ -1,0 +1,7 @@
+.card__like-button_active {
+  background: url(../../../../images/Union.svg);
+  background-repeat: no-repeat;
+  outline: 0;
+  border: 0;
+  align-self: center;
+}
