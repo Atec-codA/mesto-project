@@ -36,49 +36,7 @@
         
         <section class="elements">
           <ul class="elements__cards">
-            <!--<li class="card">
-              <img class="card__image" src="./images/Karachaevsk.jpg" alt="Карачаевск">
-              <div class="card__group">
-                <h2 class="card__title">Карачаевск</h2>
-                <button class="card__like-button" type="button" title="Мне нравится" id="likeButton"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img class="card__image" src="./images/elbrus.jpg" alt="Гора Эльбрус">
-              <div class="card__group">
-                <h2 class="card__title">Гора Эльбрус</h2>
-                <button class="card__like-button" type="button" title="Мне нравится" id="likeButton"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img class="card__image" src="./images/dombai.jpg" alt="Домбай">
-              <div class="card__group">
-                <h2 class="card__title">Домбай</h2>
-                <button class="card__like-button" type="button" title="Мне нравится"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img class="card__image" src="./images/elbrus.jpg" alt="Гора Эльбрус">
-              <div class="card__group">
-                <h2 class="card__title">Гора Эльбрус</h2>
-                <button class="card__like-button" type="button" title="Мне нравится"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img class="card__image" src="./images/dombai.jpg" alt="Домбай">
-              <div class="card__group">
-                <h2 class="card__title">Домбай</h2>
-                <button class="card__like-button" type="button" title="Мне нравится"></button>
-              </div>
-            </li>
-            <li class="card">
-              <img class="card__image" src="./images/Karachaevsk.jpg" alt="Карачаево-Черкессия">
-              <div class="card__group">
-                <h2 class="card__title">Карачаево-Черкессия</h2>
-                <button class="card__like-button" type="button" title="Мне нравится"></button>
-              </div>
-            </li>
-          </ul>-->
+          </ul>
         </section>
       </main>
 
@@ -88,6 +46,9 @@
         <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
       </footer>
     </div>
+
+    <!--Profile PopUp-->
+
     <div class="popup" id="popupProfile">
       <div class="popup__container">
         <button class="popup__close-icon" type="button" title="Закрыть" id="popupProfileCloseButton"></button>
@@ -99,25 +60,43 @@
         </form>
       </div>
     </div>
-      <div class="popup" id="popupCard">
-        <div class="popup__container">
-          <button class="popup__close-icon" type="button" title="Закрыть" id="popupCardCloseButton"></button>
-          <h3 class="popup__title">Новое место</h3>
-          <form class="popup__form" name="Profile-edit">
-            <input class="popup__input" type="text" name="Mesto-title" value="" aria-label="Название" id="NameInput">
-            <input class="popup__input" type="text" name="Url" value="" aria-label="Описание профиля" id="UrlInput">
-            <button class="popup__save-button" type="submit" title="Сохранить" name="save-button">Сохранить</button>
-          </form>
-        </div>
+
+    <!--AddCard PopUp-->
+
+    <div class="popup" id="popupCard">
+      <div class="popup__container">
+        <button class="popup__close-icon" type="button" title="Закрыть" id="popupCardCloseButton"></button>
+        <h3 class="popup__title">Новое место</h3>
+        <form class="popup__form" name="Profile-edit">
+          <input class="popup__input" type="text" name="Mesto-title" value="" aria-label="Название" id="NameInput">
+          <input class="popup__input" type="text" name="Url" value="" aria-label="Описание профиля" id="UrlInput">
+          <button class="popup__save-button" type="submit" title="Сохранить" name="save-button">Сохранить</button>
+        </form>
+      </div>
     </div>
+
+    <!--Image PopUp-->
+
+    <div class="popup popup_image">
+      <div class="popup__container-image">
+        <img class="popup__image-zoom" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Фото" />
+        <figcaption class="popup__image-figcaption"></figcaption>
+        <button class="popup__close-icon" type="button" id="image-cls-btn"></button>
+      </div>
+    </div>
+
+    <!--Card Template-->
+
     <template id="card">
       <li class="card">
         <img class="card__image" src="./images/Karachaevsk.jpg" alt="Карачаевск">
+        <button class="card__trash-button" type="button"></button>
         <div class="card__group">
           <h2 class="card__title">Карачаевск</h2>
           <button class="card__like-button" type="button" title="Мне нравится" id="likeButton"></button>
         </div>
       </li>
     </template>
+
   </body>
 </html>

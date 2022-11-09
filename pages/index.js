@@ -1,27 +1,27 @@
 const cards = [
   {
     name: 'Архыз',
-    link: './images/Karachaevsk.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
   {
     name: 'Челябинская область',
-    link: './images/Karachaevsk.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
   },
   {
     name: 'Иваново',
-    link: './images/Karachaevsk.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
   },
   {
     name: 'Камчатка',
-    link: './images/Karachaevsk.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
   },
   {
     name: 'Холмогорский район',
-    link: './images/Karachaevsk.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
   },
   {
     name: 'Байкал',
-    link: './images/Karachaevsk.jpg'
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
 
@@ -49,8 +49,16 @@ const ProfileName = document.querySelector('.profile__title');
 const ProfileJob = document.querySelector('.profile__subtitle');
 
 // Cards
+
 const cardsContainer = document.querySelector('.elements__cards');
 const cardTemplate = document.querySelector('#card').content;
+
+//Image PopUp
+
+const imageBtnClose = document.querySelector('#image-cls-btn');
+const imagePopup = document.querySelector('.popup_image');
+const image = document.querySelector('.popup__image-zoom');
+const caption = document.querySelector('.popup__image-figcaption');
 
 //Open and Close PopUp
 
@@ -76,8 +84,7 @@ function popupCardClose() {
 popupCardOpenButton.addEventListener('click', popupCardOpen);
 popupCardCloseButton.addEventListener('click', popupCardClose);
 
-////Actual Profile name and Job
-
+//Actual Profile name and Job
 
 function formSubmitActualName() {
   jobInput.value = ProfileJob.textContent;
@@ -95,20 +102,7 @@ function formSubmitHandler (evt) {
 popupProfileForm.addEventListener('submit', formSubmitHandler);
 popupCardForm.addEventListener('submit', formSubmitHandler);
 
-
-//Likes
-
-
-//let likeButton = document.querySelector('#likeButton');
-
-
-//function GetLike (evt) {
-  //evt.target.classList.toggle('card__like-button_active');
-//}
-
-//likeButton.addEventListener('click', GetLike);
-
-//Add cards
+//Add cards and likes
 
 function createCard(name, link) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
@@ -117,17 +111,12 @@ function createCard(name, link) {
   cardImage.src = link;
   cardImage.alt = name;
 
-  // cardImage.addEventListener('click', renderCardPopup);
 
   cardElement
     .querySelector('.card__like-button')
     .addEventListener('click', (evt) => {
-      evt.target.classList.toggle('card__like-button_active');
-    });
-
-  //cardElement
-    //.querySelector('.card__delete-button')
-    //.addEventListener('click', deleteCard);
+    evt.target.classList.toggle('card__like-button_active');
+  });
 
   return cardElement;
 }
@@ -157,8 +146,8 @@ function addCard(evt) {
 
 popupCard.addEventListener('submit', addCard);
 
-
 renderCards();
+
 
 
 
