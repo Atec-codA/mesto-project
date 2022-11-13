@@ -1,30 +1,3 @@
-const cards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 //Profile PopUp
 
 const popupProfile = document.querySelector('#popupProfile');
@@ -55,41 +28,40 @@ const cardTemplate = document.querySelector('#card').content;
 
 //Image PopUp
 
-const imageBtnClose = document.querySelector('#image-cls-btn');
 const imagePopup = document.querySelector('.popup_image');
 const image = document.querySelector('.popup__image-zoom');
 const caption = document.querySelector('.popup__image-figcaption');
 
 //Open and Close PopUp
 
-function popupProfileOpen() {
-  popupProfile.classList.add('popup_opened');
-}
+function openPopup(popup) {
+  popup.classList.add('popup_opened')
+};
 
-function popupProfileClose() {
-  popupProfile.classList.remove('popup_opened');
-}
+function closePopup(popup) {
+  popup.classList.remove('popup_opened')
+};
 
-popupProfileOpenButton.addEventListener('click', popupProfileOpen);
-popupProfileCloseButton.addEventListener('click', popupProfileClose);
+popupProfileOpenButton.addEventListener('click', function () {
+  openPopup(popupProfile);
+});
 
-function popupCardOpen() {
-  popupCard.classList.add('popup_opened');
-}
+popupCardOpenButton.addEventListener('click', function () {
+  openPopup(popupCard)
+});
 
-function popupCardClose() {
-  popupCard.classList.remove('popup_opened');
-}
+window.addEventListener('click', function (e) {
+  if (e.target.classList.contains('popup__close-icon') || e.target.classList.contains('popup')) {
+    closePopup(e.target.closest('.popup'));
+  }
+});
 
-popupCardOpenButton.addEventListener('click', popupCardOpen);
-popupCardCloseButton.addEventListener('click', popupCardClose);
-
-//Actual Profile name and Job
+//Edit profile info
 
 function formSubmitActualName() {
   jobInput.value = ProfileJob.textContent;
   nameInput.value = ProfileName.textContent;
-}
+};
 
 function formSubmitHandler (evt) {
   evt.preventDefault(); 
@@ -97,12 +69,12 @@ function formSubmitHandler (evt) {
   ProfileName.textContent = nameInput.value;
   popupProfile.classList.remove('popup_opened');
   popupCard.classList.remove('popup_opened');
-}
+};
 
 popupProfileForm.addEventListener('submit', formSubmitHandler);
 popupCardForm.addEventListener('submit', formSubmitHandler);
 
-//Add cards and likes
+//Add, delete, likes cards
 
 function createCard(name, link) {
   const cardElement = cardTemplate.querySelector('.card').cloneNode(true);
@@ -111,30 +83,29 @@ function createCard(name, link) {
   cardImage.src = link;
   cardImage.alt = name;
 
-
   cardElement
     .querySelector('.card__like-button')
     .addEventListener('click', (evt) => {
     evt.target.classList.toggle('card__like-button_active');
   });
 
+  cardElement.querySelector('.card__trash-button').addEventListener('click', function (e) {
+    e.target.closest('.card').remove();
+  });
+
+  cardImage.addEventListener('click', function () {
+    openPopup(imagePopup);
+    image.src = link;
+    image.alt = name;
+    caption.textContent = name;
+  });
+
   return cardElement;
-}
+};
 
 function renderCard(card, container) {
   container.prepend(card);
-}
-
-function renderCards() {
-  cards.forEach((item) =>
-    renderCard(createCard(item.name, item.link), cardsContainer)
-  );
-}
-
-function deleteCard(evt) {
-  const card = evt.target.closest('.card');
-  card.remove();
-}
+};
 
 function addCard(evt) {
   evt.preventDefault();
@@ -146,10 +117,12 @@ function addCard(evt) {
 
 popupCard.addEventListener('submit', addCard);
 
+//Render cards from array
+
+function renderCards() {
+  cards.forEach((database) =>
+    renderCard(createCard(database.name, database.link), cardsContainer)
+  );
+};
+
 renderCards();
-
-
-
-
-
-

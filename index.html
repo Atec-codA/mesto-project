@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
+    <script src="./pages/database.js" defer></script>
     <script src="./pages/index.js" defer></script>
   </head>
   <body class="page">
@@ -68,8 +69,8 @@
         <button class="popup__close-icon" type="button" title="Закрыть" id="popupCardCloseButton"></button>
         <h3 class="popup__title">Новое место</h3>
         <form class="popup__form" name="Profile-edit">
-          <input class="popup__input" type="text" name="Mesto-title" value="" aria-label="Название" id="NameInput">
-          <input class="popup__input" type="text" name="Url" value="" aria-label="Описание профиля" id="UrlInput">
+          <input class="popup__input" type="text" name="Mesto-title" value="" placeholder="Название" id="NameInput">
+          <input class="popup__input" type="text" name="Url" value="" placeholder="Ссылка на картинку" id="UrlInput">
           <button class="popup__save-button" type="submit" title="Сохранить" name="save-button">Сохранить</button>
         </form>
       </div>
@@ -79,7 +80,7 @@
 
     <div class="popup popup_image">
       <div class="popup__container-image">
-        <img class="popup__image-zoom" src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg" alt="Фото" />
+        <img class="popup__image-zoom" src="" alt="Фото" />
         <figcaption class="popup__image-figcaption"></figcaption>
         <button class="popup__close-icon" type="button" id="image-cls-btn"></button>
       </div>
