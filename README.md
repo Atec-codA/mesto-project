@@ -20,9 +20,10 @@
 # Используемые языки:
 * HTML5
 * CSS 3
+* JavaScript
 
 ---
 
-## [Посмотреть проект](https://atec-coda.github.io/mesto-project/)
+## [Посмотреть проект](https://atetscoda.github.io/mesto-project/)
 
 В планах перевод сайта на английский язык
