@@ -20,7 +20,7 @@
 # Используемые языки:
 * HTML5
 * CSS 3
-* JavaScript
+* JavаScript
 
 ---
 
