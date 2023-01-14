@@ -3,10 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto</title>
-    <script src="./pages/database.js" defer></script>
-    <script src="./pages/index.js" defer></script>
   </head>
   <body class="page">
     <div class="page__property">
@@ -14,7 +11,7 @@
       <!--Header-->
 
       <header class="header">
-        <img class="logo header__logo" src="./images/Vector.svg" alt="Место">
+        <img class="logo header__logo" src="<%=require('./images/Vector.svg')%>" alt="Место">
       </header>
 
       <!--Main-->
@@ -24,7 +21,7 @@
         <!--Profile-->
         
         <section class="profile">
-          <img class="profile__avatar" src="./images/image-profile.jpg" alt="Аватар">
+          <img class="profile__avatar" src="<%=require('./images/image-profile.jpg')%>" alt="Аватар">
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button class="profile__button-edit" type="button" title="Редактирование профиля"></button>
@@ -90,7 +87,7 @@
 
     <template id="card">
       <li class="card">
-        <img class="card__image" src="./images/Karachaevsk.jpg" alt="Карачаевск">
+        <img class="card__image" src="<%=require('./images/Karachaevsk.jpg')%>" alt="Карачаевск">
         <button class="card__trash-button" type="button"></button>
         <div class="card__group">
           <h2 class="card__title">Карачаевск</h2>

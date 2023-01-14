@@ -1,3 +1,6 @@
+import '../pages/index.css';
+import {cards} from './database.js';
+
 //Profile PopUp
 
 const popupProfile = document.querySelector('#popupProfile');
@@ -128,3 +131,9 @@ function renderCards() {
 };
 
 renderCards();
+
+// VALIDATION 
+
+
+
+
