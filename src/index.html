@@ -51,9 +51,11 @@
       <div class="popup__container">
         <button class="popup__close-icon" type="button" title="Закрыть" id="popupProfileCloseButton"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="popup__form" name="Profile-edit" id="popupProfileForm">
-          <input class="popup__input" type="text" name="Profile-title" value="" aria-label="Название профиля" id="popupInputName">
-          <input class="popup__input" type="text" name="Profile-subtitle" value="" aria-label="Описание профиля" id="popupInputJob">
+        <form class="popup__form" name="Profile-edit" id="popupProfileForm" novalidate>
+          <input class="popup__input" type="text" name="Profile-title" value="" aria-label="Название профиля" id="name-input" placeholder="Имя" minlength="2" maxlength="40" required>
+          <span class="popup__input-error name-input-error">Пиписька</span>
+          <input class="popup__input" type="text" name="Profile-subtitle" value="" aria-label="Описание профиля" id="about-input" placeholder="О себе" minlength="2" maxlength="200" required>
+          <span class="popup__input-error about-input-error"></span>
           <button class="popup__save-button" type="submit" title="Сохранить" name="save-button" id="">Сохранить</button>
         </form>
       </div>

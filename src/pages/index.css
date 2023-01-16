@@ -35,4 +35,6 @@
 @import url(../blocks/popup/__image-figcaption/popup__image-figcaption.css);
 @import url(../blocks/popup/__image-zoom/popup__image-zoom.css);
 @import url(../blocks/popup/_image/popup_image.css);
-@import url();
+@import url(../blocks/popup/__input/_type/_error/popup__input_type_error.css);
+@import url(../blocks/popup/__input-error/popup__input-error.css);
+@import url(../blocks/popup/__input-error/_type/_active/popup__input-error_type_active.css);
