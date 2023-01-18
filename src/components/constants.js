@@ -3,13 +3,13 @@
 export const enableValidationSettings = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
+  submitButtonSelector: '.popup__save-button',
+  inactiveButtonClass: 'popup__save-button_type_inactive',
   inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
+  errorClass: 'popup__input-error_type_active'
 };
 
-//Profile PopUp ( modal.js )
+// Profile PopUp ( modal.js )
 
 export const popupProfile = document.querySelector('#popupProfile');
 export const popupProfileOpenButton = document.querySelector('.profile__button-edit');
@@ -18,7 +18,7 @@ export const nameInput = popupProfileForm.querySelector('#name-input');
 export const jobInput = popupProfileForm.querySelector('#about-input');
 
 
-//Card PopUp ( modal.js )
+// Card PopUp ( modal.js )
 
 export const popupCard = document.querySelector('#popupCard');
 export const popupCardOpenButton = document.querySelector('#AddButton');
@@ -26,7 +26,7 @@ export const popupCardForm = popupCard.querySelector('#popupCardForm');
 export const inputPopupName = popupCard.querySelector('#card-name');
 export const inputUrl = popupCard.querySelector('#input-url');
 
-//Actual Profile name and Job ( modal.js )
+// Actual Profile name and Job ( modal.js )
 
 export const profileName = document.querySelector('.profile__title');
 export const profileJob = document.querySelector('.profile__subtitle');
@@ -36,7 +36,7 @@ export const profileJob = document.querySelector('.profile__subtitle');
 export const cardsContainer = document.querySelector('.elements__cards');
 export const cardTemplate = document.querySelector('#card').content;
 
-//Image PopUp ( modal.js )
+// Image PopUp ( modal.js )
 
 export const imagePopup = document.querySelector('.popup_image');
 export const image = document.querySelector('.popup__image-zoom');

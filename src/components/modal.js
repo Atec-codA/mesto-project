@@ -19,7 +19,7 @@ export const handleSubmitProfile = (evt) => {
   evt.preventDefault(); 
   profileJob.textContent = jobInput.value;
   profileName.textContent = nameInput.value;
-  popupProfile.classList.remove('popup_opened');
+  closePopup(popupProfile);
 };
 
 // Create new card
@@ -27,8 +27,7 @@ export const handleSubmitProfile = (evt) => {
 export const addCard = (evt) => {
   evt.preventDefault();
   renderCard(createCard(inputPopupName.value, inputUrl.value), cardsContainer);
-  inputPopupName.value = '';
-  inputUrl.value = '';
+  evt.target.reset();
   closePopup(popupCard);
 };
 

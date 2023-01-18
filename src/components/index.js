@@ -12,7 +12,7 @@ import {enableValidation} from './validate.js';
 
 // Import from constants.js
 
-import {enableValidationSettings} from './constants.js';
+import {enableValidationSettings as settings} from './constants.js';
 import {closeButtons} from './constants.js';
 import {popupProfileOpenButton} from './constants.js';
 import {popupCardOpenButton} from './constants.js';
@@ -63,6 +63,6 @@ renderCards();
 
 // Enable validation ( validate.js )
 
-enableValidation(enableValidationSettings); 
+enableValidation(settings); 
 
 
