@@ -40,6 +40,7 @@ popupProfileOpenButton.addEventListener('click', () => {
 
 popupCardOpenButton.addEventListener('click', () => {
   openPopup(popupCard);
+  enableValidation(settings); 
 });
 
 // Listener for close popup's
