@@ -9,6 +9,7 @@ import {addCard} from './modal.js';
 // Import from validate.js
 
 import {enableValidation} from './validate.js';
+import {setEventListeners} from './validate.js';
 
 // Import from constants.js
 
@@ -22,11 +23,12 @@ import {jobInput} from './constants.js';
 import {nameInput} from './constants.js';
 import {profileJob} from './constants.js';
 import {profileName} from './constants.js';
+import {popupCardForm} from './constants.js';
+
 
 // Import from card.js
 
 import {renderCards} from './card.js';
-
 
 // Listener for open ProfilePopup
 
@@ -40,7 +42,8 @@ popupProfileOpenButton.addEventListener('click', () => {
 
 popupCardOpenButton.addEventListener('click', () => {
   openPopup(popupCard);
-  enableValidation(settings); 
+  popupCardForm.reset();
+  setEventListeners(popupCardForm, settings);
 });
 
 // Listener for close popup's

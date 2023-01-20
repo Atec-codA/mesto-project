@@ -35,7 +35,7 @@ const checkInputValidity = (formElement, inputElement, settings) => {
   }
 };
 
-const setEventListeners = (formElement, settings) => {
+export const setEventListeners = (formElement, settings) => {
   const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
   const buttonElement = formElement.querySelector(settings.submitButtonSelector);
   toggleButtonState(inputList, buttonElement, settings);
