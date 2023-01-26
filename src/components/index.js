@@ -9,7 +9,7 @@ import {addCard} from './modal.js';
 // Import from validate.js
 
 import {enableValidation} from './validate.js';
-import {setEventListeners} from './validate.js';
+import {btnDisabled} from './validate.js';
 
 // Import from constants.js
 
@@ -41,9 +41,10 @@ popupProfileOpenButton.addEventListener('click', () => {
 // Listener for open CardPopup
 
 popupCardOpenButton.addEventListener('click', () => {
+  const SubmButton = popupCard.querySelector(settings.submitButtonSelector);
   openPopup(popupCard);
   popupCardForm.reset();
-  setEventListeners(popupCardForm, settings);
+  btnDisabled(SubmButton, settings);
 });
 
 // Listener for close popup's
