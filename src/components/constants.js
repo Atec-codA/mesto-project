@@ -17,7 +17,6 @@ export const popupProfileForm = popupProfile.querySelector('#popupProfileForm');
 export const nameInput = popupProfileForm.querySelector('#name-input');
 export const jobInput = popupProfileForm.querySelector('#about-input');
 
-
 // Card PopUp ( modal.js )
 
 export const popupCard = document.querySelector('#popupCard');

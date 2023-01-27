@@ -41,10 +41,10 @@ popupProfileOpenButton.addEventListener('click', () => {
 // Listener for open CardPopup
 
 popupCardOpenButton.addEventListener('click', () => {
-  const SubmButton = popupCard.querySelector(settings.submitButtonSelector);
+  const submButton = popupCard.querySelector(settings.submitButtonSelector);
   openPopup(popupCard);
   popupCardForm.reset();
-  btnDisabled(SubmButton, settings);
+  btnDisabled(submButton, settings);
 });
 
 // Listener for close popup's
