@@ -1,7 +1,7 @@
 .card__like-button {
   background: url('../../../images/Stroke.svg');
 
-  margin: 0;
+  margin: 0 auto;
   width: 22px;
   height: 19px;
   
@@ -15,7 +15,7 @@
 
 .card__like-button:active {
   background: url('../../../images/Union.svg');
-  
+
   background-repeat: no-repeat;
   outline: 0;
   border: 0;
