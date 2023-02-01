@@ -1,36 +1,3 @@
-// Import from constants.js
-
-import {jobInput} from './constants.js';
-import {nameInput} from './constants.js';
-import {profileJob} from './constants.js';
-import {profileName} from './constants.js';
-import {inputPopupName} from './constants.js';
-import {cardsContainer} from './constants.js';
-import {inputUrl} from './constants.js';
-
-// Import from card.js
-
-import {renderCard} from './card.js';
-import {createCard} from './card.js';
-
-// Edit profile info
-
-export const handleSubmitProfile = (evt) => {
-  evt.preventDefault(); 
-  profileJob.textContent = jobInput.value;
-  profileName.textContent = nameInput.value;
-  closePopup(popupProfile);
-};
-
-// Create new card
-
-export const addCard = (evt) => {
-  evt.preventDefault();
-  renderCard(createCard(inputPopupName.value, inputUrl.value), cardsContainer);
-  evt.target.reset();
-  closePopup(popupCard);
-};
-
 // Open popup
 
 export const openPopup = (popup) => {

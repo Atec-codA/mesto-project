@@ -2,33 +2,103 @@ import '../pages/index.css';
 
 // Import from modal.js
 
-import {openPopup, closePopup,} from './modal.js';
-import {handleSubmitProfile} from './modal.js';
-import {addCard} from './modal.js';
+import {openPopup, closePopup} from './modal.js';
 
 // Import from validate.js
 
-import {enableValidation} from './validate.js';
-import {btnDisabled} from './validate.js';
+import {enableValidation, btnDisabled} from './validate.js';
 
 // Import from constants.js
 
-import {enableValidationSettings as settings} from './constants.js';
-import {closeButtons} from './constants.js';
-import {popupProfileOpenButton} from './constants.js';
-import {popupCardOpenButton} from './constants.js';
-import {popupProfile} from './constants.js';
-import {popupCard} from './constants.js';
-import {jobInput} from './constants.js';
-import {nameInput} from './constants.js';
-import {profileJob} from './constants.js';
-import {profileName} from './constants.js';
-import {popupCardForm} from './constants.js';
-
+import {enableValidationSettings as settings, popupProfileForm, closeButtons, popupProfileOpenButton, popupCardOpenButton, popupProfile, popupCard, jobInput, nameInput, profileJob, profileName, popupCardForm, avatarPopup, avatarForm, avatarPhotoInput, avatarSubmitBtn, profileAvatar, profileSubmitBtn, cardSubmitBtn, inputPopupName, inputUrl, cardsContainer} from './constants.js';
 
 // Import from card.js
 
-import {renderCards} from './card.js';
+import {createCard} from './card.js';
+
+// Import from api.js
+
+import {getSrvUser, getSrvCards, editProfile, changeAvatar, createNewCard} from "./api.js";
+
+// User data
+
+let user = {};
+
+
+// Load data and cards from server
+
+Promise.all([getSrvUser(), getSrvCards()])
+  .then(([srvUser, cards]) => {
+    user = srvUser;
+    profileName.textContent = user.name;
+    profileJob.textContent = user.about;
+    profileAvatar.src = user.avatar;
+
+    cards.reverse().forEach((data) => {
+      cardsContainer.prepend(createCard(data, user));
+    })
+  })
+  .catch((err) => {
+    console.error(err);
+})
+
+function changeProfile (evt) {
+  evt.preventDefault();
+  profileSubmitBtn.textContent = 'Сохранение...';
+  editProfile(nameInput.value, jobInput.value)
+    .then(() => {
+      profileName.textContent = nameInput.value;
+      profileJob.textContent = jobInput.value;
+      closePopup(popupProfile);
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+    .finally(() => {
+      profileSubmitBtn.textContent = 'Сохранить';
+    });
+  
+}
+
+// Edit avatar
+
+function changeAvatarProfile(evt) {
+  evt.preventDefault();
+  avatarSubmitBtn.textContent = 'Сохранение...';
+  const avatar = avatarPhotoInput.value;
+  changeAvatar(avatar)
+    .then((item) => {
+      profileAvatar.src = item.avatar;
+      avatarForm.reset();
+      evt.target.reset();
+      closePopup(avatarPopup);
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+    .finally(() => {
+      avatarSubmitBtn.textContent = 'Сохранить';
+    })
+}
+
+// Add new card
+
+function addNewCard (evt) {
+  evt.preventDefault();
+  cardSubmitBtn.textContent = 'Создание...';
+  createNewCard(inputUrl.value, inputPopupName.value)
+    .then((data) => {
+      cardsContainer.prepend(createCard(data, user));
+      evt.target.reset();
+      closePopup(popupCard);
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+    .finally(() => {
+      cardSubmitBtn.textContent = 'Создать';
+    });
+}
 
 // Listener for open ProfilePopup
 
@@ -47,6 +117,12 @@ popupCardOpenButton.addEventListener('click', () => {
   btnDisabled(submButton, settings);
 });
 
+// Listener for open Avatar popup
+
+profileAvatar.addEventListener('click', function() {
+  openPopup(avatarPopup);
+});
+
 // Listener for close popup's
 
 closeButtons.forEach((button) => {
@@ -56,15 +132,15 @@ closeButtons.forEach((button) => {
 
 // Listener for profile submit button (  )  
 
-popupProfileForm.addEventListener('submit', handleSubmitProfile);
+popupProfileForm.addEventListener('submit', changeProfile);
 
 // Listener for card submit button ( card.js )
 
-popupCardForm.addEventListener('submit', addCard);
+popupCardForm.addEventListener('submit', addNewCard);
 
 // Render cards from array ( database.js )
 
-renderCards();
+avatarForm.addEventListener('submit', changeAvatarProfile);
 
 // Enable validation ( validate.js )
 

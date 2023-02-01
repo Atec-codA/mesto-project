@@ -1,0 +1,15 @@
+.profile__avatar-group {
+  position: relative;
+
+  margin: 0;
+  padding: 0;
+  
+  background-color: transparent;
+  z-index: 0;
+  cursor: pointer;
+}
+
+.profile__avatar-group:hover .profile__avatar-pen {
+  visibility: visible;
+  opacity: 1;
+}

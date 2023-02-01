@@ -1,4 +1,3 @@
-
 // Show error text 
 
 const showInputError = (formElement, inputElement, errorMessage, settings) => {
@@ -25,12 +24,10 @@ const checkInputValidity = (formElement, inputElement, settings) => {
   } else {
     inputElement.setCustomValidity("");
   }
-  
+
   if (!inputElement.validity.valid) {
-    
     showInputError(formElement, inputElement, inputElement.validationMessage, settings);
   } else {
-    
     hideInputError(formElement, inputElement, settings);
   }
 };
@@ -55,8 +52,7 @@ export const enableValidation = (settings) => {
     formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
     });
-  
-      setEventListeners(formElement, settings);
+    setEventListeners(formElement, settings);
   }); 
 };
 
@@ -72,10 +68,10 @@ const hasInvalidInput = (inputList) => {
 
 const toggleButtonState = (inputList, buttonElement, settings) => {
   if (hasInvalidInput(inputList)) {
-        buttonElement.disabled = true;
+    buttonElement.disabled = true;
     buttonElement.classList.add(settings.inactiveButtonClass);
   } else {
-        buttonElement.disabled = false;
+    buttonElement.disabled = false;
     buttonElement.classList.remove(settings.inactiveButtonClass);
   }
 };

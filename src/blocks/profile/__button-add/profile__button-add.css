@@ -1,16 +1,19 @@
 .profile__button-add {
+  background: transparent url(../../../images/Vector-add-button.svg);
+  
+  align-self: center;
+  justify-self: end;
+  
+  margin: 0 0 0 auto;
   width: 150px;
   height: 50px;
-  background: transparent url(../../../images/Vector-add-button.svg);
+
   background-repeat: no-repeat;
   background-position: center;
   background-size: 22px;
   outline: none;
   border: 2px solid white;
   border-radius: 2px;
-  align-self: center;
-  justify-self: end;
-  margin: 0 0 0 auto;
   transition: 0.1s linear;
   cursor: pointer;
 }
@@ -22,6 +25,7 @@
 @media screen and (max-width: 767px) {
   .profile__button-add {
     width: 100%;
+
     background-size: 16px;
     margin-top: 36px;
   }

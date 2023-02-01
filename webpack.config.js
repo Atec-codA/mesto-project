@@ -11,6 +11,7 @@ module.exports = {
         publicPath: ''
   },
   mode: 'development',
+  devtool: 'eval-source-map',
   devServer: {
     static: path.join(__dirname, './dist'), // путь, куда "смотрит" режим разработчика
     compress: false, // это ускорит загрузку в режиме разработки
