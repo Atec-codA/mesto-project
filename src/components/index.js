@@ -10,7 +10,7 @@ import {enableValidation, btnDisabled} from './validate.js';
 
 // Import from constants.js
 
-import {enableValidationSettings as settings, popupProfileForm, closeButtons, popupProfileOpenButton, popupCardOpenButton, popupProfile, popupCard, jobInput, nameInput, profileJob, profileName, popupCardForm, avatarPopup, avatarForm, avatarPhotoInput, avatarSubmitBtn, profileAvatar, profileSubmitBtn, cardSubmitBtn, inputPopupName, inputUrl, cardsContainer} from './constants.js';
+import {enableValidationSettings as settings, popupProfileForm, popupProfileOpenButton, popupCardOpenButton, popupProfile, popupCard, jobInput, nameInput, profileJob, profileName, popupCardForm, avatarPopup, avatarForm, avatarPhotoInput, avatarSubmitBtn, profileAvatar, profileSubmitBtn, cardSubmitBtn, inputPopupName, inputUrl, cardsContainer} from './constants.js';
 
 // Import from card.js
 
@@ -122,13 +122,6 @@ profileAvatar.addEventListener('click', function() {
   openPopup(avatarPopup);
   btnDisabled(submButton, settings);
 });
-
-// Listener for close popup's
-
-closeButtons.forEach((button) => {
-  const popup = button.closest('.popup');
-  button.addEventListener('click', () => closePopup(popup));
-})
 
 // Listener for profile submit button (  )  
 
