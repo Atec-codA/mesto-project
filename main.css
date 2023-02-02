@@ -20,7 +20,8 @@
 .card__like-num{color:#000;font-size:13px;font-weight:400;line-height:16px;margin:0 auto;text-align:center}
 .card__group{align-items:center;display:flex;justify-content:space-between;padding:25px 20px 25px 21px}
 .card__like-button_active{align-self:center;background:url(35948469632d0421d697.svg);background-repeat:no-repeat;border:0;outline:0}
-.card__trash-button{background:url(e3c42771bff3aaa52f76.svg);background-position:50%;background-repeat:no-repeat;border:0;cursor:pointer;height:19px;position:absolute;right:20px;top:20px;width:18px}.card__trash-button:hover{opacity:.6}
+.card__trash-button{background:url(e3c42771bff3aaa52f76.svg);background-position:50%;background-repeat:no-repeat;border:0;cursor:pointer;display:none;height:19px;position:absolute;right:20px;top:20px;width:18px}.card__trash-button:hover{opacity:.6}
+.card__trash-button_type_active{display:block}
 .popup{background:rgba(0,0,0,.5);bottom:0;display:flex;font-family:Inter;height:100vh;justify-content:center;left:0;opacity:0;position:fixed;right:0;top:0;transition:visibility .6s,opacity .3s ease-in-out;visibility:hidden;width:100vw;z-index:-10}
 .popup_opened{opacity:1;visibility:visible;z-index:2}
 .popup__close-icon{align-self:center;background:url(973e77374abfb705de40.svg);background-repeat:no-repeat;background-size:contain;border:0;cursor:pointer;height:32px;margin:0;outline:0;position:absolute;right:-40px;top:-40px;transition:.1s linear;width:32px}.popup__close-icon:hover{opacity:.5}@media screen and (max-width:767px){.popup__close-icon{height:20px;right:0;top:-36px;width:20px}}
