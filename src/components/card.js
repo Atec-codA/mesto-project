@@ -29,7 +29,7 @@ export const createCard = (data, user) => {
   // Delete user card's
 
   if (user._id === data.owner._id) {
-    cardTrashBtn.classList.add('element__trash-button_active'); // НЕТУУУУУ
+    cardTrashBtn.classList.add('card__trash-button_type_active');
     cardTrashBtn.addEventListener('click', function () {
       deleteCard(data._id)
         .then(() => {

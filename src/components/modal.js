@@ -1,9 +1,10 @@
+import {allPopups} from './constants.js';
+
 // Open popup
 
 export const openPopup = (popup) => {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeEsc);
-  document.addEventListener('mousedown', closeOverlay);
 };
 
 // Close popup
@@ -11,7 +12,6 @@ export const openPopup = (popup) => {
 export const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keydown', closeEsc);
-  document.removeEventListener('mousedown', closeOverlay);
 };
 
 // Close popup from Esc
@@ -24,8 +24,10 @@ const closeEsc = (evt) => {
 
 // Close popup from overlay click
 
-const closeOverlay = (evt) => {
-  if (evt.target.classList.contains('popup')) {
-    closePopup(evt.target);
-  }
-};
+allPopups.forEach((popup) => {
+  popup.addEventListener("mousedown", (evt) => {
+    if (evt.target.classList.contains("popup") || evt.target.classList.contains("popup__close-icon")) {
+      closePopup(popup)
+    }
+  });
+});

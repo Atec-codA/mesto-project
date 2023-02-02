@@ -37,6 +37,7 @@
 @import url(../blocks/card/__group/card__group.css);
 @import url(../blocks/card/__like-button/_active/card__like-button_active.css);
 @import url(../blocks/card/__trash-button/card__trash-button.css);
+@import url(../blocks/card/__trash-button/_type/_active/card__trash-button_type_active.css);
 
 /* Popup block import */
 
