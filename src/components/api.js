@@ -21,7 +21,7 @@ class Api {
   }
 
   getSrvCards() { // загрузка карточек с сервера
-    return fetch(`${config.baseUrl}/users/me`, {
+    return fetch(`${config.baseUrl}/cards`, {
       headers: config.headers
     })
     .then(res => this._checkResponse(res))
