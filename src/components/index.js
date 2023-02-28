@@ -6,7 +6,7 @@ import {openPopup, closePopup} from './modal.js';
 
 // Import from validate.js
 
-import {enableValidation, btnDisabled} from './validate.js';
+import {FormValidator, btnDisabled} from './validate.js';
 
 // Import from constants.js
 
@@ -137,6 +137,10 @@ avatarForm.addEventListener('submit', changeAvatarProfile);
 
 // Enable validation ( validate.js )
 
-enableValidation(settings); 
-
+const profileValidate = new FormValidator(settings, formElement);
+profileValidate.enableValidation();
+const addCardValidate = new FormValidator(settings, formPlace);
+addCardValidate.enableValidation();
+const profilePhotoValidate = new FormValidator(settings, formEditPhoto);
+profilePhotoValidate.enableValidation();
 
