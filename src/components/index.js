@@ -18,7 +18,7 @@ import {createCard} from './card.js';
 
 // Import from api.js
 
-import {getSrvUser, getSrvCards, editProfile, changeAvatar, createNewCard} from "./api.js";
+import {api} from "./api.js";
 
 // User data
 
@@ -27,7 +27,7 @@ let user = {};
 
 // Load data and cards from server
 
-Promise.all([getSrvUser(), getSrvCards()])
+Promise.all([api.getSrvUser(), api.getSrvCards()])
   .then(([srvUser, cards]) => {
     user = srvUser;
     profileName.textContent = user.name;
@@ -45,7 +45,7 @@ Promise.all([getSrvUser(), getSrvCards()])
 function changeProfile (evt) {
   evt.preventDefault();
   profileSubmitBtn.textContent = 'Сохранение...';
-  editProfile(nameInput.value, jobInput.value)
+  api.editProfile(nameInput.value, jobInput.value)
     .then(() => {
       profileName.textContent = nameInput.value;
       profileJob.textContent = jobInput.value;
@@ -66,7 +66,7 @@ function changeAvatarProfile(evt) {
   evt.preventDefault();
   avatarSubmitBtn.textContent = 'Сохранение...';
   const avatar = avatarPhotoInput.value;
-  changeAvatar(avatar)
+  api.changeAvatar(avatar)
     .then((item) => {
       profileAvatar.src = item.avatar;
       avatarForm.reset();
@@ -85,7 +85,7 @@ function changeAvatarProfile(evt) {
 function addNewCard (evt) {
   evt.preventDefault();
   cardSubmitBtn.textContent = 'Создание...';
-  createNewCard(inputUrl.value, inputPopupName.value)
+  api.createNewCard(inputUrl.value, inputPopupName.value)
     .then((data) => {
       cardsContainer.prepend(createCard(data, user));
       closePopup(popupCard);

@@ -8,7 +8,7 @@ import {openPopup} from './modal.js';
 
 // Import from api.js
 
-import {deleteCard, addLike, deleteLike} from "./api.js";
+import {api} from "./api.js";
 
 
 // Add, delete, likes cards
@@ -31,7 +31,7 @@ export const createCard = (data, user) => {
   if (user._id === data.owner._id) {
     cardTrashBtn.classList.add('card__trash-button_type_active');
     cardTrashBtn.addEventListener('click', function () {
-      deleteCard(data._id)
+      api.deleteCard(data._id)
         .then(() => {
           removeCard(cardTrashBtn);
         })
@@ -53,7 +53,7 @@ export const createCard = (data, user) => {
 
   cardLikeBtn.addEventListener('click', function (evt) {
     if (!evt.target.classList.contains('card__like-button_active')) {
-      addLike(data._id)
+      api.addLike(data._id)
         .then((data) => {
           evt.target.classList.add('card__like-button_active');
           cardLikeNum.textContent = data.likes.length;
@@ -62,7 +62,7 @@ export const createCard = (data, user) => {
           console.error(err);
         })
     } else {
-      deleteLike(data._id)
+      api.deleteLike(data._id)
         .then((data) => {
           evt.target.classList.remove('card__like-button_active');
           cardLikeNum.textContent = data.likes.length;
