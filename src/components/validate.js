@@ -1,10 +1,11 @@
 export class FormValidator {
 
-  constructor(config, form) {
-    this._inputSelector = config.inputSelector;
-    this._inputErrorClass = config.inputErrorClass;
-    this._submitButtonSelector = config.submitButtonSelector;
-    this._inactiveButtonClass = config.inactiveButtonClass;
+  constructor(settings, form) {
+    this._inputSelector = settings.inputSelector;
+    this._inputErrorClass = settings.inputErrorClass;
+    this._errorClass = settings.errorClass;
+    this._submitButtonSelector = settings.submitButtonSelector;
+    this._inactiveButtonClass = settings.inactiveButtonClass;
     this._form = form; // форма, где запускаем валидацию
     this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector)); // список инпутов в форме
     this._buttonElement = this._form.querySelector(this._submitButtonSelector); // кнопка сабмит
@@ -12,11 +13,13 @@ export class FormValidator {
 
   _showInputError(inputElement, errorElement) { // приватный метод - показать текст ошибки
     inputElement.classList.add(this._inputErrorClass);
+    errorElement.classList.add(this._errorClass);
     errorElement.textContent = inputElement.validationMessage;
   }
 
   _hideInputError(inputElement, errorElement) { // приватный метод - скрыть текст ошибки
     inputElement.classList.remove(this._inputErrorClass);
+    errorElement.classList.remove(this._errorClass);
     errorElement.textContent = "";
   }
 
@@ -54,7 +57,7 @@ export class FormValidator {
   resetError() {
     this.toggleButtonState();
     this._inputList.forEach((input) => {
-      const errorElement = this._form.querySelector(`.input-error-${input.name}`);
+      const errorElement = this._form.querySelector(`.${input.id}-error`);
       this._hideInputError(input, errorElement);
     });
   }
@@ -65,7 +68,7 @@ export class FormValidator {
 
   _handleFormInput(evt) {
     const inputElement = evt.target;
-    const errorElement = this._form.querySelector(`.input-error-${inputElement.name}`);
+    const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
     this._checkInputValidity(inputElement, errorElement);
     this.toggleButtonState();
   }

@@ -6,7 +6,7 @@ import {openPopup, closePopup} from './modal.js';
 
 // Import from validate.js
 
-import {FormValidator, btnDisabled} from './validate.js';
+import {FormValidator} from './validate.js';
 
 // Import from constants.js
 
@@ -112,7 +112,6 @@ popupCardOpenButton.addEventListener('click', () => {
   const submButton = popupCard.querySelector(settings.submitButtonSelector);
   openPopup(popupCard);
   popupCardForm.reset();
-  btnDisabled(submButton, settings);
 });
 
 // Listener for open Avatar popup
@@ -120,7 +119,6 @@ popupCardOpenButton.addEventListener('click', () => {
 profileAvatar.addEventListener('click', function() {
   const submButton = avatarPopup.querySelector(settings.submitButtonSelector);
   openPopup(avatarPopup);
-  btnDisabled(submButton, settings);
 });
 
 // Listener for profile submit button (  )  
@@ -137,10 +135,11 @@ avatarForm.addEventListener('submit', changeAvatarProfile);
 
 // Enable validation ( validate.js )
 
+const formElement = document.querySelector(".popup__form");
+
 const profileValidate = new FormValidator(settings, formElement);
 profileValidate.enableValidation();
-const addCardValidate = new FormValidator(settings, formPlace);
+const addCardValidate = new FormValidator(settings, popupCard);
 addCardValidate.enableValidation();
-const profilePhotoValidate = new FormValidator(settings, formEditPhoto);
+const profilePhotoValidate = new FormValidator(settings, avatarForm);
 profilePhotoValidate.enableValidation();
-
