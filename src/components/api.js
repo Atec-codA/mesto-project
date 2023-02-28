@@ -6,6 +6,17 @@ const config = {
   }
 };
 
+
+class Api {
+  constructor() {
+
+  }
+
+  getCards() {
+
+  }
+}
+
 // Response check
 
 const checkResponse = (res) => {
