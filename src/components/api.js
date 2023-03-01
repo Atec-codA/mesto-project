@@ -1,4 +1,4 @@
-const config = {
+export const config = {
   baseUrl: 'https://nomoreparties.co/v1/plus-cohort-19',
   headers: {
     authorization: '84a824a1-ebc5-4e78-9013-e4331df145ed',
@@ -6,7 +6,7 @@ const config = {
   }
 };
 
-class Api {
+export class Api {
   constructor({ baseUrl, headers }) {
     this.baseUrl = baseUrl;
     this.headers = headers;
@@ -94,4 +94,4 @@ class Api {
   }
 }
 
-export const api = new Api(config);
+
