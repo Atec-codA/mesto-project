@@ -8,8 +8,7 @@ import {openPopup} from './modal.js';
 
 // Import from api.js
 
-import {api} from "./api.js";
-
+import {Api} from "./api.js";
 
 // Add, delete, likes cards
 
@@ -31,7 +30,7 @@ export const createCard = (data, user) => {
   if (user._id === data.owner._id) {
     cardTrashBtn.classList.add('card__trash-button_type_active');
     cardTrashBtn.addEventListener('click', function () {
-      api.deleteCard(data._id)
+      Api.deleteCard(data._id)
         .then(() => {
           removeCard(cardTrashBtn);
         })
@@ -53,7 +52,7 @@ export const createCard = (data, user) => {
 
   cardLikeBtn.addEventListener('click', function (evt) {
     if (!evt.target.classList.contains('card__like-button_active')) {
-      api.addLike(data._id)
+      Api.addLike(data._id)
         .then((data) => {
           evt.target.classList.add('card__like-button_active');
           cardLikeNum.textContent = data.likes.length;
@@ -62,7 +61,7 @@ export const createCard = (data, user) => {
           console.error(err);
         })
     } else {
-      api.deleteLike(data._id)
+      Api.deleteLike(data._id)
         .then((data) => {
           evt.target.classList.remove('card__like-button_active');
           cardLikeNum.textContent = data.likes.length;
@@ -89,3 +88,43 @@ function removeCard(card) {
   const element = card.closest('.card');
   element.remove();
 };
+
+export class Card {
+  constructor(item, handleCardClick) {
+    this._name = item.name;
+    this._link = item.link;
+    this.handleCardClick = handleCardClick;
+  }
+
+  _getElement() { // создание разметки
+    const element = document
+    .querySelector("#card")
+    .content
+    .querySelector(".card")
+    .cloneNode(true);
+
+    return element;
+  }
+
+  generate() {
+    this.element = this._getElement(); // запишем разметку в приватное поле
+    this.element.querySelector(".card__title").textContent = this._name;
+    this.element.querySelector(".card__image").src = this._link;
+    this.element.querySelector(".card__image").alt = this._link;
+
+    this._setEventListener();
+
+    return this._element;
+
+  }
+
+  _setEventListener() {
+    this.element // слушатель на клик по карточке
+    .querySelector(".card__image")
+    .addEventListener("click", () => {
+      this.handleCardClick();
+    })
+  }
+
+
+}
