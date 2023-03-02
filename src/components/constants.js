@@ -55,5 +55,4 @@ export const avatarSubmitBtn = avatarForm.querySelector('.popup__save-button');
 
 
 
-
 export const profile = document.querySelector(".profile");
