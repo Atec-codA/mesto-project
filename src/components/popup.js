@@ -2,7 +2,7 @@ export class Popup {
     constructor(selector) {
       this.selector = selector;
       this._popup = document.querySelector(this.selector);
-      this._form = this._popup.querySelector(".popup__form");
+      this._form = this._popup.querySelector('.popup__form');
       this._handleEscClose = this._handleEscClose.bind(this);
     }
   
@@ -31,17 +31,17 @@ export class Popup {
   }
 
 export class PopupWithImage extends Popup {
-  constructor(selector, { name, link }) {
+  constructor(selector) {
     super(selector);
-    this._name = name;
-    this._link = link;
+    this.image = this._popup.querySelector(".popup__image-zoom");
+    this.text = this._popup.querySelector(".popup__image-figcaption");
   }
 
-  open() { // при открытии попапа вставляет изображение и текст
+  open(name, link) { // при открытии попапа вставляет изображение и текст
     super.open();
-    document.querySelector(".popup__image-zoom").alt = this._name;
-    document.querySelector(".popup__image-zoom").src = this._link;
-    document.querySelector(".popup__image-figcaption").textContent = this._name;
+    this.text.alt = name;
+    this.image.src = link;
+    this.text.textContent = name;
   }
 }
 

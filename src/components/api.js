@@ -12,7 +12,7 @@ export class Api {
     this.headers = headers;
   }
 
-  _checkResponse(res) { // приватный метод - проверка статуса запроса
+  _checkResponse(res) { // Check server response
     if (res.ok) {
       return res.json();
     } else {
@@ -20,21 +20,21 @@ export class Api {
     }
   }
 
-  getSrvCards() { // загрузка карточек с сервера
+  getSrvCards() { // Load cards from server
     return fetch(`${config.baseUrl}/cards`, {
       headers: config.headers
     })
     .then(res => this._checkResponse(res))
   }
 
-  getSrvUser() { // получение данных о пользователе
+  getSrvUser() { // Get user data from server
     return fetch(`${this.baseUrl}/users/me`, {
       headers: this.headers
     })
       .then(res => this._checkResponse(res))
   }
 
-  editProfile(name, about) { // изменение данных пользователи и рода деятельности
+  editProfile(name, about) { // Profile edit
     return fetch(`${this.baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this.headers,
@@ -46,7 +46,7 @@ export class Api {
     .then(res => this._checkResponse(res))
   }
 
-  createNewCard(name, link) { // создание новой карточки
+  createNewCard(name, link) { // Create new card
     return fetch(`${this.baseUrl}/cards`, {
       method: 'POST',
       headers: this.headers,
@@ -58,7 +58,7 @@ export class Api {
     .then(res => this._checkResponse(res))
   }
 
-  addLike(card) { // добавление лайка фотографии
+  addLike(card) { // Add like
     return fetch(`${this.baseUrl}/cards/likes/${card}`, {
       method: 'PUT',
       headers: this.headers
@@ -66,7 +66,7 @@ export class Api {
     .then(res => this._checkResponse(res))
   }
 
-  deleteLike(card) { // удаление лайка с фотографии
+  deleteLike(card) { // Delete like
     return fetch(`${this.baseUrl}/cards/likes/${card}`, {
       method: 'DELETE',
       headers: this.headers
@@ -74,7 +74,7 @@ export class Api {
     .then(res => this._checkResponse(res))
   }
 
-  deleteCard(card) { // удаление карточки
+  deleteCard(card) { // Delete card
     return fetch(`${this.baseUrl}/cards/${card}`, {
       method: 'DELETE',
       headers: this.headers
@@ -82,7 +82,7 @@ export class Api {
     .then(res => this._checkResponse(res))
   }
 
-  changeAvatar(photo) { // изменить аватар
+  changeAvatar(photo) { // Change avatar
     return fetch(`${this.baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: this.headers,
