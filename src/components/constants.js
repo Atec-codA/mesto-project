@@ -52,3 +52,8 @@ export const avatarPopup = document.querySelector('.popup_avatar');
 export const avatarForm = avatarPopup.querySelector('.popup__form-avatar');
 export const avatarPhotoInput = avatarForm.querySelector('.popup__input');
 export const avatarSubmitBtn = avatarForm.querySelector('.popup__save-button');
+
+
+
+
+export const profile = document.querySelector(".profile");

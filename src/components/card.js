@@ -1,17 +1,3 @@
-// Import from constants.js
-
-import {cardTemplate, imagePopup, image, caption} from './constants.js';
-
-// Import from modal.js
-
-import {openPopup} from './modal.js';
-
-// Import from api.js
-
-import {Api} from "./api.js";
-
-// Card class
-
 export class Card {
   constructor(item, profile, handleCardClick, {myCardDelete, myPushLike, myDeleteLike}) {
     this.item = item;

@@ -1,57 +1,50 @@
 import '../pages/index.css';
 
-// Import from modal.js
-
-import {openPopup,} from './modal.js';
-
 // Import from validate.js
 
-import {FormValidator} from './validate.js';
+import {FormValidator} from './FormValidator.js';
 
 // Import from userinfo.js
 
-import { UserInfo } from "./userinfo.js";
+import { UserInfo } from "./Userinfo.js";
 
 // Import from constants.js
 // remove popupProfile,//
 
-import {enableValidationSettings as settings, popupProfileForm, popupProfileOpenButton, popupCardOpenButton, popupCard, jobInput, nameInput, profileJob, profileName, popupCardForm, avatarPopup, avatarForm, avatarPhotoInput, avatarSubmitBtn, profileAvatar, profileSubmitBtn, cardSubmitBtn, inputPopupName, inputUrl, cardsContainer, formElement, image, caption} from './constants.js';
+import {enableValidationSettings as settings, popupProfileOpenButton, popupCardOpenButton, popupCard, jobInput, nameInput, profileJob, profileName, popupCardForm, avatarForm, avatarSubmitBtn, profileAvatar, profileSubmitBtn, cardSubmitBtn, formElement, profile} from './constants.js';
 
 // Import from popup.js
 
-import { PopupWithImage, PopupWithForm } from "./popup.js";
+import { PopupWithImage, PopupWithForm } from "./Popup.js";
 
 // Import from card.js
 
-import {Card} from './card.js';
+import {Card} from './Card.js';
 
 // Import from api.js
 
-import {Api, config} from "./api.js";
+import {Api, config} from "./Api.js";
 
 // Import from Section.js
 
 import { Section } from "./Section.js";
 
-// User data
+// Create classes
 
-const profile = document.querySelector(".profile"); //профиль пользователя
-const fullImage = document.querySelector(".popup__image-zoom"); // фотография полноэкранного изображения
-const imageOpenFullDescription = document.querySelector(".popup__image-figcaption"); //подпись фото из третьего попапа
 const userInfo = new UserInfo(profile, profileName, profileJob, profileAvatar);
 const api = new Api(config);
-
-
-//const popupProfile = new Popup("#popupProfile");
-//const popupAddCard = new Popup("#popupCard");
-//const popupFullImage = new PopupWithImage(".popup_image", { image, caption });
-//const popupAvatar = new Popup(".popup_avatar");
-
-
-
-
+const popupFullImage = new PopupWithImage(".popup_image");
 let cardElement;
 let section;
+
+// Start validation
+
+const profileValidate = new FormValidator(settings, formElement);
+profileValidate.enableValidation();
+const addCardValidate = new FormValidator(settings, popupCard);
+addCardValidate.enableValidation();
+const profilePhotoValidate = new FormValidator(settings, avatarForm);
+profilePhotoValidate.enableValidation();
 
 // Load data and cards from server
 
@@ -70,8 +63,7 @@ Promise.all([api.getSrvUser(), api.getSrvCards()])
     console.error(err);
 })
 
-const popupFullImage = new PopupWithImage(".popup_image");
-popupFullImage.setEventListeners();
+// Render loading
 
 const renderLoading = (button ,bolean) => {
   if(bolean) {
@@ -80,6 +72,8 @@ const renderLoading = (button ,bolean) => {
     button.textContent = 'Сохранить';
   }
 }
+
+// Edit popup profile
 
 const popupEditProfile = new PopupWithForm("#popupProfile", 
   {handleFormSubmit: (evt) =>
@@ -119,7 +113,7 @@ const popupEditPhoto = new PopupWithForm(".popup_avatar",
 });
 popupEditPhoto.setEventListeners();
 
-// Add new card
+// Add new card popup
 
 const popupNewCard = new PopupWithForm("#popupCard",  
   {handleFormSubmit: (evt) => {
@@ -141,6 +135,8 @@ const popupNewCard = new PopupWithForm("#popupCard",
   }}
 );
 popupNewCard.setEventListeners();
+
+// Add new card
 
 const createCard = (item) => {
   const createCardItem = new Card(item, profile, popupFullImage, 
@@ -174,30 +170,31 @@ const createCard = (item) => {
     return createCardItem.generate();
 }
 
-//слушатель на редактирование фото
+// Listener for image popup
+
+popupFullImage.setEventListeners();
+
+// Listener for avatar popup
+
 profileAvatar.addEventListener("click", () => {
   profilePhotoValidate.toggleButtonState();
   profilePhotoValidate.resetError();
   popupEditPhoto.open();
 })
 
-// слушатель на кнопку карандаша, который при клике на карандаш вызывает функцию, которая открывает окно формы для редактирования профиля
+// Listener for profile popup
+
 popupProfileOpenButton.addEventListener("click", () => {
   popupEditProfile.open();
   nameInput.value = userInfo.getUserInfo().name;
   jobInput.value = userInfo.getUserInfo().job;
 });
 
-// cлушатель на кнопку добавления новой карточки
+// Listener for add card popup
+
 popupCardOpenButton.addEventListener("click", () => {
   addCardValidate.toggleButtonState();
   addCardValidate.resetError();
   popupNewCard.open();
 })
 
-const profileValidate = new FormValidator(settings, formElement);
-profileValidate.enableValidation();
-const addCardValidate = new FormValidator(settings, popupCard);
-addCardValidate.enableValidation();
-const profilePhotoValidate = new FormValidator(settings, avatarForm);
-profilePhotoValidate.enableValidation();
