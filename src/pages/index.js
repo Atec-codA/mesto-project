@@ -1,33 +1,36 @@
-import '../pages/index.css';
+import './index.css';
 
 // Import from validate.js
 
-import {FormValidator} from './FormValidator.js';
+import { FormValidator } from '../components/FormValidator.js';
 
 // Import from userinfo.js
 
-import { UserInfo } from "./Userinfo.js";
+import { UserInfo } from "../components/Userinfo.js";
 
 // Import from constants.js
-// remove popupProfile,//
 
-import {enableValidationSettings as settings, popupProfileOpenButton, popupCardOpenButton, popupCard, jobInput, nameInput, profileJob, profileName, popupCardForm, avatarForm, avatarSubmitBtn, profileAvatar, profileSubmitBtn, cardSubmitBtn, formElement, profile} from './constants.js';
+import { enableValidationSettings as settings, popupProfileOpenButton, popupCardOpenButton, popupCard, jobInput, nameInput, profileJob, profileName, popupCardForm, avatarForm, avatarSubmitBtn, profileAvatar, profileSubmitBtn, cardSubmitBtn, formElement, profile, config } from '../components/constants.js';
 
 // Import from popup.js
 
-import { PopupWithImage, PopupWithForm } from "./Popup.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+
+// Import from PopupWithImage.js
+
+import { PopupWithImage } from "../components/PopupWithImage.js";
 
 // Import from card.js
 
-import {Card} from './Card.js';
+import { Card } from '../components/Card.js';
 
 // Import from api.js
 
-import {Api, config} from "./Api.js";
+import { Api } from "../components/Api.js";
 
 // Import from Section.js
 
-import { Section } from "./Section.js";
+import { Section } from "../components/Section.js";
 
 // Create classes
 
@@ -79,7 +82,7 @@ const popupEditProfile = new PopupWithForm("#popupProfile",
   {handleFormSubmit: (evt) =>
     {evt.preventDefault();
     renderLoading(profileSubmitBtn, true);
-    api.editInfoUser(popupEditProfile.getInputValues())
+    api.editProfile(popupEditProfile.getInputValues())
       .then((data) => {
         userInfo.setUserInfo(data);
         popupEditProfile.close();
@@ -197,4 +200,3 @@ popupCardOpenButton.addEventListener("click", () => {
   addCardValidate.resetError();
   popupNewCard.open();
 })
-

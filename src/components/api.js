@@ -1,10 +1,4 @@
-export const config = {
-  baseUrl: 'https://nomoreparties.co/v1/plus-cohort-19',
-  headers: {
-    authorization: '84a824a1-ebc5-4e78-9013-e4331df145ed',
-    'Content-Type': 'application/json'
-  }
-};
+import { config } from './constants.js';
 
 export class Api {
   constructor({ baseUrl, headers }) {
@@ -34,25 +28,25 @@ export class Api {
       .then(res => this._checkResponse(res))
   }
 
-  editProfile(name, about) { // Profile edit
+  editProfile(data) { // Profile edit
     return fetch(`${this.baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify({
-        name: name,
-        about: about
+        name: data.name,
+        about: data.job
       })
     })
     .then(res => this._checkResponse(res))
   }
 
-  createNewCard(name, link) { // Create new card
+  createNewCard(data) { // Create new card
     return fetch(`${this.baseUrl}/cards`, {
       method: 'POST',
       headers: this.headers,
       body: JSON.stringify({
-        name: name,
-        link: link
+        name: data.place,
+        link: data.link
       })
     })
     .then(res => this._checkResponse(res))
@@ -82,16 +76,14 @@ export class Api {
     .then(res => this._checkResponse(res))
   }
 
-  changeAvatar(photo) { // Change avatar
+  changePhoto(data) { // Change avatar
     return fetch(`${this.baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: this.headers,
       body: JSON.stringify({
-        avatar: photo
+        avatar: data.photo
       })
     })
     .then(res => this._checkResponse(res))
   }
 }
-
-

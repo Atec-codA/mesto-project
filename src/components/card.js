@@ -2,10 +2,10 @@ export class Card {
   constructor(item, profile, handleCardClick, {myCardDelete, myPushLike, myDeleteLike}) {
     this.item = item;
     this._id = item._id;
-    this._name = item.name; // наименование картинки, приходит из массива
-    this._link = item.link; // ссылка на картинку, приходит из массива
+    this._name = item.name; 
+    this._link = item.link; 
     this.handleCardClick = handleCardClick;
-    this.profile = profile; // document.querySelector(".profile")
+    this.profile = profile; 
     this.myCardDelete = myCardDelete;
     this.myPushLike = myPushLike;
     this.myDeleteLike = myDeleteLike;
@@ -17,12 +17,12 @@ export class Card {
     this._photo = this.element.querySelector(".card__image");
   }
 
-  generate() { // публичный метод создания карточки 
+  generate() { // Generate card
     this._title.textContent = this._name;
     this._photo.src = this._link;
     this._photo.alt = this._link;
 
-    if(this.profile.id === this.item.owner._id) { // добавляем корзину, если картинка наша
+    if(this.profile.id === this.item.owner._id) { // Add trash button
       this.buttonRemove.classList.add("card__trash-button_type_active");
     }
 
@@ -32,7 +32,7 @@ export class Card {
       this.countLike.textContent = this.item.likes.length;
     }
 
-    this.item.likes.forEach((obj) => { // мои лайки при перезагрузке страницы не пропадают
+    this.item.likes.forEach((obj) => { 
       if (Object.values(obj).includes(this.profile.id)) {
         this.itemLike.classList.add("card__like-button_active");
       }
@@ -62,15 +62,15 @@ export class Card {
   }
 
   _setEventListeners() {
-    this.element.querySelector(".card__image").addEventListener("click", () => { // вызов попапа withImage
+    this.element.querySelector(".card__image").addEventListener("click", () => { // Popup with image event listener
       this.handleCardClick.open(this._name, this._link);
     })
 
-    this.buttonRemove.addEventListener("click", (evt) => {
+    this.buttonRemove.addEventListener("click", (evt) => {  // Popup with image event listener
       this.myCardDelete(this.item);
     });
 
-    this.itemLike.addEventListener("click", (evt) => {
+    this.itemLike.addEventListener("click", (evt) => { // Like event listener
       if (!evt.target.classList.contains("card__like-button_active")) {
         this.myPushLike(this.item);
       } else {

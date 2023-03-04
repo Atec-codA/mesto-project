@@ -6,34 +6,34 @@ export class FormValidator {
     this._errorClass = settings.errorClass;
     this._submitButtonSelector = settings.submitButtonSelector;
     this._inactiveButtonClass = settings.inactiveButtonClass;
-    this._form = form; // форма, где запускаем валидацию
-    this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector)); // список инпутов в форме
-    this._buttonElement = this._form.querySelector(this._submitButtonSelector); // кнопка сабмит
+    this._form = form; 
+    this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector)); 
+    this._buttonElement = this._form.querySelector(this._submitButtonSelector); 
   }
 
-  _showInputError(inputElement, errorElement) { // приватный метод - показать текст ошибки
+  _showInputError(inputElement, errorElement) { 
     inputElement.classList.add(this._inputErrorClass);
     errorElement.classList.add(this._errorClass);
     errorElement.textContent = inputElement.validationMessage;
   }
 
-  _hideInputError(inputElement, errorElement) { // приватный метод - скрыть текст ошибки
+  _hideInputError(inputElement, errorElement) { 
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.classList.remove(this._errorClass);
     errorElement.textContent = "";
   }
 
-  _disableButton() { // приватный метод - деактивировать кнопку
+  _disableButton() { 
     this._buttonElement.classList.add(this._inactiveButtonClass);
     this._buttonElement.disabled = true;
   }
 
-  _enableButton() { // приватный метод - активировать кнопку
+  _enableButton() { 
     this._buttonElement.classList.remove(this._inactiveButtonClass);
     this._buttonElement.disabled = false;
   }
 
-  toggleButtonState() { // метод - переключатель кнопки
+  toggleButtonState() { 
     if(this._hasInvalidInput()) {
       this._disableButton();
     } else {
@@ -41,7 +41,7 @@ export class FormValidator {
     }
   }
 
-  _checkInputValidity(inputElement, errorElement) { // приватный метод - проверки валидации
+  _checkInputValidity(inputElement, errorElement) { 
     if (inputElement.validity.patternMismatch) {
       inputElement.setCustomValidity(inputElement.dataset.errorMessage);
     } else {
@@ -62,7 +62,7 @@ export class FormValidator {
     });
   }
 
-  _hasInvalidInput() {  // инпуты, не прошедшие валидацию
+  _hasInvalidInput() { 
     return this._inputList.some((input) => !input.validity.valid);
   }
 
@@ -73,7 +73,7 @@ export class FormValidator {
     this.toggleButtonState();
   }
 
-  enableValidation() { // публичный метод валидации
+  enableValidation() { 
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", (evt) => {
         this._handleFormInput(evt);

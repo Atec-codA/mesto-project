@@ -8,6 +8,16 @@ export const enableValidationSettings = {
   errorClass: 'popup__input-error_type_active'
 };
 
+// Api config ( Api.js )
+
+export const config = {
+  baseUrl: 'https://nomoreparties.co/v1/plus-cohort-19',
+  headers: {
+    authorization: '84a824a1-ebc5-4e78-9013-e4331df145ed',
+    'Content-Type': 'application/json'
+  }
+};
+
 // Profile popup ( modal.js )
 
 export const popupProfile = document.querySelector('#popupProfile');
@@ -52,7 +62,4 @@ export const avatarPopup = document.querySelector('.popup_avatar');
 export const avatarForm = avatarPopup.querySelector('.popup__form-avatar');
 export const avatarPhotoInput = avatarForm.querySelector('.popup__input');
 export const avatarSubmitBtn = avatarForm.querySelector('.popup__save-button');
-
-
-
 export const profile = document.querySelector(".profile");
