@@ -15,10 +15,10 @@ export class UserInfo {
     return this;
   }
     
-  setUserInfo(data) {
-    this._id.id = data._id;
-    this._name.textContent = data.name;
-    this._job.textContent = data.about;
-    this._avatar.src = data.avatar;
+  setUserInfo({name, about, avatar, _id}) {
+    this._id.id = _id;
+    this._name.textContent = name;
+    this._job.textContent = about;
+    this._avatar.src = avatar;
   }
 }

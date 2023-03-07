@@ -10,7 +10,7 @@ import { UserInfo } from "../components/Userinfo.js";
 
 // Import from constants.js
 
-import { enableValidationSettings as settings, popupProfileOpenButton, popupCardOpenButton, popupCard, jobInput, nameInput, profileJob, profileName, popupCardForm, avatarForm, avatarSubmitBtn, profileAvatar, profileSubmitBtn, cardSubmitBtn, formElement, profile, config } from '../components/constants.js';
+import { enableValidationSettings as settings, popupProfileOpenButton, popupCardOpenButton, popupCard, jobInput, nameInput, profileJob, profileName, popupCardForm, avatarForm, avatarSubmitBtn, profileAvatar, profileSubmitBtn, cardSubmitBtn, formElement, profile, config } from '../utils/constants.js';
 
 // Import from popup.js
 
@@ -124,7 +124,6 @@ const popupNewCard = new PopupWithForm("#popupCard",
   renderLoading(cardSubmitBtn, true);
   api.createNewCard(popupNewCard.getInputValues())
     .then((item) => {
-      popupCardForm.reset();
       cardElement = createCard(item);
       section.addItem(cardElement);
       popupNewCard.close();
@@ -189,8 +188,9 @@ profileAvatar.addEventListener("click", () => {
 
 popupProfileOpenButton.addEventListener("click", () => {
   popupEditProfile.open();
-  nameInput.value = userInfo.getUserInfo().name;
-  jobInput.value = userInfo.getUserInfo().job;
+  const {name, job} = userInfo.getUserInfo()
+  nameInput.value = name;
+  jobInput.value = job;
 });
 
 // Listener for add card popup

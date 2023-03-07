@@ -62,7 +62,7 @@ export class Card {
   }
 
   _setEventListeners() {
-    this.element.querySelector(".card__image").addEventListener("click", () => { // Popup with image event listener
+    this._photo.addEventListener("click", () => { // Popup with image event listener
       this.handleCardClick.open(this._name, this._link);
     })
 

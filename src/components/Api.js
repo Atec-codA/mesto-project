@@ -1,4 +1,4 @@
-import { config } from './Constants.js';
+import { config } from '../utils/constants.js';
 
 export class Api {
   constructor({ baseUrl, headers }) {
