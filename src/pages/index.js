@@ -180,7 +180,7 @@ popupFullImage.setEventListeners();
 
 profileAvatar.addEventListener("click", () => {
   profilePhotoValidate.toggleButtonState();
-  profilePhotoValidate.resetError();
+  profilePhotoValidate.resetValidation();
   popupEditPhoto.open();
 })
 
@@ -197,6 +197,6 @@ popupProfileOpenButton.addEventListener("click", () => {
 
 popupCardOpenButton.addEventListener("click", () => {
   addCardValidate.toggleButtonState();
-  addCardValidate.resetError();
+  addCardValidate.resetValidation();
   popupNewCard.open();
 })
