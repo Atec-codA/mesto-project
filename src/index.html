@@ -55,9 +55,9 @@
         <button class="popup__close-icon" type="button" title="Закрыть" id="popupProfileCloseButton"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
         <form class="popup__form" name="Profile-edit" id="popupProfileForm" novalidate>
-          <input class="popup__input" type="text" name="Profile-title" value="" aria-label="Название профиля" id="name-input" placeholder="Имя" minlength="2" maxlength="40" pattern="^[a-zA-Zа-яА-яёЁ\s\-]+$" required data-error-message="Поле должно содержать только латинские буквы, кириллические буквы, знаки дефиса и пробелы.">
+          <input class="popup__input" type="text" name="name" value="" aria-label="Название профиля" id="name-input" placeholder="Имя" minlength="2" maxlength="40" pattern="^[a-zA-Zа-яА-яёЁ\s\-]+$" required data-error-message="Поле должно содержать только латинские буквы, кириллические буквы, знаки дефиса и пробелы.">
           <span class="popup__input-error name-input-error"></span>
-          <input class="popup__input" type="text" name="Profile-subtitle" value="" aria-label="Описание профиля" id="about-input" placeholder="О себе" minlength="2" maxlength="200" pattern="^[a-zA-Zа-яА-яёЁ\s\-]+$" required data-error-message="Поле должно содержать только латинские буквы, кириллические буквы, знаки дефиса и пробелы.">
+          <input class="popup__input" type="text" name="job" value="" aria-label="Описание профиля" id="about-input" placeholder="О себе" minlength="2" maxlength="200" pattern="^[a-zA-Zа-яА-яёЁ\s\-]+$" required data-error-message="Поле должно содержать только латинские буквы, кириллические буквы, знаки дефиса и пробелы.">
           <span class="popup__input-error about-input-error"></span>
           <button class="popup__save-button" type="submit" title="Сохранить" name="save-button" id="">Сохранить</button>
         </form>
@@ -71,10 +71,10 @@
         <button class="popup__close-icon" type="button" title="Закрыть" id="popupCardCloseButton"></button>
         <h3 class="popup__title">Новое место</h3>
         <form class="popup__form" name="Profile-edit" id="popupCardForm" novalidate>
-          <input class="popup__input" type="text" name="card-name" value="" placeholder="Название" id="card-name" minlength="2" maxlength="30" pattern="^[a-zA-Zа-яА-яёЁ\s\-]+$" required
+          <input class="popup__input" type="text" name="place" value="" placeholder="Название" id="card-name" minlength="2" maxlength="30" pattern="^[a-zA-Zа-яА-яёЁ\s\-]+$" required
           data-error-message="Поле должно содержать только латинские буквы, кириллические буквы, знаки дефиса и пробелы.">
           <span class="popup__input-error card-name-error"></span>
-          <input class="popup__input" type="url" name="input-url" value="" placeholder="Ссылка на картинку" id="input-url" required>
+          <input class="popup__input" type="url" name="link" value="" placeholder="Ссылка на картинку" id="input-url" required>
           <span class="popup__input-error input-url-error"></span>
           <button class="popup__save-button" type="submit" title="Сохранить" name="save-button">Сохранить</button>
         </form>
@@ -97,7 +97,7 @@
       <div class="popup__container">
         <h2 class="popup__title">Обновить аватар</h2>
         <form class="popup__form popup__form-avatar" name="form-avatar" novalidate>
-          <input class="popup__input" type="url" name="avatar-link" id="avatarLink" placeholder="Ссылка на картинку" required>
+          <input class="popup__input" type="url" name="photo" id="avatarLink" placeholder="Ссылка на картинку" required>
           <span class="popup__input-error avatarLink-error"></span>
           <button class="popup__save-button" type="submit" disabled>Сохранить</button>
         </form>
